@@ -48,6 +48,7 @@ public class TrainUiController {
             }
 
         };
+
         model.addAttribute("trainList", trainList);
 
         return "train/trainList";

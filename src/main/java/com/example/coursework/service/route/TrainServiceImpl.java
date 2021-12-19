@@ -25,12 +25,8 @@ public class TrainServiceImpl implements ITrainService {
 
     @Override
     public Train update(Train train) {
-        repository.deleteById(train.getId());
-        String id = train.getId();
-        Platform platform = train.getPlatform();
+
         repository.save(train);
-        train.setId(id);
-        train.setPlatform(platform);
 
         return train;
     }
