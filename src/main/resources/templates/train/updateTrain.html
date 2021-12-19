@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Train</title>
+    <link  th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="element">
+        <form id="dataMain" action="#" th:action="@{/ui/train/update}" th:object="${train}"
+              method="POST">
+
+            <table>
+                <tr>
+                    <td><label for="num1">Code</label></td>
+                    <td><input id="num1" th:field="*{code}"  required></td>
+                </tr>
+                <tr>
+                    <td><label for="num2">Route</label></td>
+                    <td>
+                        <div id="num2" style="text-align: left">
+                            <select th:field="*{route}">
+                                <option th:each="route: ${routeList}"
+                                        th:value="${route.id}" th:text="${route.name}">
+                                </option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+
+                <!--  <tr>
+                       <td><label for="num3">Platform</label></td>
+                       <td>
+                           <div id="num3" style="text-align: left">
+                               <select th:field="*{platform}">
+                                   <option th:each="platform: ${platformList}"
+                                           th:value="${platform.number}" th:text="${platform.number}">
+                                   </option>
+                               </select>
+                           </div>
+                       </td>
+                   </tr>-->
+                <tr>
+                    <td><label for="num5">TimeOfArrival</label></td>
+                    <td><input id="num5" th:field="*{timeOfArrival}"  required></td>
+                </tr>
+                <tr>
+                    <td><label for="num4">TimeOfDeparture</label></td>
+                    <td><input id="num4" th:field="*{timeOfDeparture}"  required></td>
+                </tr>
+
+                <tr>
+                    <td><label for="num6">TimeOfStop</label></td>
+                    <td><input id="num6" th:field="*{timeOfStop}"  required></td>
+                </tr>
+            </table>
+
+            <br><br>
+
+            <button form="dataMain" type="submit" class="btn btn-3">DONE</button>
+        </form>
+        <br>
+        <a th:href="@{/ui/train/get/all}">
+            <button class="btn btn-5">Back</button>
+        </a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Platform</title>
+    <link  th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="element">
+        <form action="#" th:action="@{/ui/platform/add}" th:object="${platform}"
+              method="POST">
+
+            <div>
+                <h1>ADD ROUTE</h1>
+            </div>
+
+            <table>
+
+                <tr>
+                    <td><label for="num1">Number Of Platform</label></td>
+                    <td><input id="num1" th:field="*{number}"  required></td>
+                </tr>
+
+            </table>
+
+            <br><br>
+
+            <button type="submit" class="btn btn-3">SAVE</button>
+        </form>
+
+        <br>
+        <a th:href="@{/ui/platform/get/all}">
+            <button class="btn btn-5">Back</button>
+        </a>
+
+    </div>
+
+</body>
+</html>

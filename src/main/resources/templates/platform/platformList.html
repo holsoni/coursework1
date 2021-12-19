@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Platform List</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="content">
+        <table>
+            <thead>
+                <tr class="title">
+
+                    <th style="">Number of platform</th>
+                    <th style="">Is free</th>
+                    <th style="" colspan="2">OPTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr th:each="platform: ${platformList}">
+                <td th:text="${platform.number}"></td>
+                <td th:text="${platform.free}"></td>
+
+                <td>
+                    <a th:href="@{/ui/platform/delete/{id}(id=${platform.id})}">
+                        <button class="buttonDelete">Delete</button>
+                    </a>
+                    <!--<a th:href="@{/ui/platform/showUpdateForm/{id}(id=${platform.id})}">
+                        <button class="buttonEdit">Edit</button>
+                    </a>-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <br>
+
+        <a th:href = "@{/ui/platform/showNewForm}">
+            <button class="btn btn-5">Add</button>
+        </a>
+
+    </div>
+</body>
+</html>

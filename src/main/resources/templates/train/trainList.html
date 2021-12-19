@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Train Timetable</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="content">
+        <table>
+            <thead>
+                <tr class="title">
+                    <th style="">Code</th>
+                    <th style="">Route</th>
+                    <th style="">Platform</th>
+                    <th style="">TimeOfArrival</th>
+                    <th style="">TimeOfDeparture</th>
+                    <th style="">TimeOfStop</th>
+                    <th style="">OnStation</th>
+                    <th style="" colspan="2">OPTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr th:each="train: ${trainList}">
+                <td th:text="${train.code}"></td>
+                <td th:text="${train.route.name}"></td>
+                <td th:text="${train.platform.number}"></td>
+                <td th:text="${train.timeOfArrival}"></td>
+                <td th:text="${train.timeOfDeparture}"></td>
+                <td th:text="${train.timeOfStop}"></td>
+                <td th:text="${train.onStation}"></td>
+
+                <td>
+                    <a th:href="@{/ui/train/delete/{id}(id=${train.id})}">
+                        <button class="buttonDelete">Delete</button>
+                    </a>
+                    <!--<a th:href="@{/ui/train/showUpdateForm/{id}(id=${train.id})}">
+                        <button class="buttonEdit">Edit</button>
+                    </a>-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <br>
+
+        <a th:href = "@{/ui/train/showNewForm}">
+            <button class="btn btn-5">Add</button>
+        </a>
+
+    </div>
+</body>
+</html>

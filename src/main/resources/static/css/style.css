@@ -1,0 +1,220 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #e5e6de;
+    background-position: center;
+    background-size: 100%;
+
+}
+
+button{
+    cursor: pointer;
+}
+
+table, tr, td{
+}
+
+.content{
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+
+.content table{
+    width: 100%;
+    border-collapse: collapse;
+    background: #e5e6deed;
+}
+
+.content table tr.title{
+    background: none !important;
+}
+
+.content table tr.title th{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.content table tr{
+    transition: .2s;
+    background: none;
+}
+
+.content table tr:hover{
+    background: #b0b0b0;
+    transition: .2s;
+}
+
+.content table td{
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.content table th{
+    border-bottom: 3px grey dashed;
+    padding: 5px;
+}
+
+.content .buttonDelete,
+.content .buttonEdit,
+.content .buttonInfo{
+    border-bottom: 3px grey dashed;
+    padding: 5px;
+    width: 90px;
+    background: #f5eded;
+    transition: .2s;
+}
+
+.content td a{
+    text-decoration: none;
+}
+
+.content .buttonDelete:hover,
+.content .buttonEdit:hover,
+.content .buttonInfo:hover{
+    background: white;
+    border: 2px grey dashed;
+    border-bottom: 3px grey dashed;
+    transition: .2s;
+}
+
+.content .buttonEdit{
+}
+
+.content .buttonDelete{
+}
+
+.buttonGeneral{
+    padding:10px 30px 10px 30px;
+    font-size: 30px;
+    border-radius: 20px 20px 0 0;
+    font-family: Mishafi monospace;
+    border:3px inset #6b6b6b;
+    background: #6d6d6d;
+    transition: .2s;
+}
+
+.buttonGeneral:hover{
+    border:3px inset black;
+    background: #b7b7b7;
+    transition: .2s;
+}
+
+.element{
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+}
+
+.element table{
+    display: inline-block;
+    font-size: 20px;
+}
+
+.element table td:first-child{
+    float: left;
+    margin-right: 10px;
+}
+
+.element table td input,
+.element select{
+    font-size: 20px;
+    width: 200px;
+}
+
+.element form{
+    background: #ffffffde;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+}
+
+.btn {
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 45px;
+    margin: 0 0 2em;
+    max-width: 160px;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+
+.btn-3 {
+    background: #a9a6a6;
+    border: 1px solid #8d8d8d;
+    box-shadow: 0px 2px 0 #c6c6c6, 2px 4px 6px #3f2a09;
+    font-weight: 900;
+    letter-spacing: 1px;
+    transition: all 150ms linear;
+}
+
+.btn-3:hover {
+    background: #d0d0d0;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 1px 1px 2px rgb(255 255 255 / 20%);
+    color: #7c7b7a;
+    text-decoration: none;
+    text-shadow: -1px -1px 0 #737373;
+    transition: all 250ms linear;
+}
+
+.btn-5 {
+    border: 1px transparent solid;
+    box-shadow: inset 0 0 20px rgb(40 29 2);
+    outline: rgb(0 0 0) solid 1px;
+    outline-offset: 0px;
+    text-shadow: none;
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    background: rgb(90 91 85);
+}
+
+.btn-5:hover {
+    border: 1px solid;
+    box-shadow: inset 0 0 20px rgb(255 200 0), 0 0 20px rgb(39 32 9);
+    outline-color: rgb(163 133 94);
+    outline-offset: 15px;
+    text-shadow: 1px 1px 2px #427388;
+}
+
+
+.content .dropItem{
+    display: none;
+    padding: 20px;
+    background: #f6d6ae;
+}
+
+.content .dropItem table{
+    background: none;
+    margin-bottom: 10px;
+}
+
+.content .dropItem table td{
+    text-align: left;
+}
+
+.content .dropItem table td:first-child{
+    font-weight: bold;
+}
+
+.menu tr td a {
+    text-decoration: none;
+    color: #785732;
+}
+
+.menu-text {
+    color: white;
+}
+
+.link__menu {
+    display: block;
+    padding: 2px;
+}

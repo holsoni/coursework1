@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Route</title>
+    <link  th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="element">
+        <form id="dataMain" action="#" th:action="@{/ui/route/update}" th:object="${route}"
+              method="POST">
+
+            <table>
+
+                <tr>
+                    <td><label for="num1">Start Station</label></td>
+                    <td><input id="num1" th:field="*{startStation}"  required></td>
+                </tr>
+
+                <tr>
+                    <td><label for="num2">End Station</label></td>
+                    <td><input id="num2" th:field="*{endStation}"  required></td>
+                </tr>
+
+
+                <tr>
+                    <td><label for="num3">Time</label></td>
+                    <td><input id="num3" th:field="*{time}"  required></td>
+                </tr>
+
+            </table>
+
+            <br><br>
+
+            <button form="dataMain" type="submit" class="btn btn-3">DONE</button>
+        </form>
+        <br>
+        <a th:href="@{/ui/route/get/all}">
+            <button class="btn btn-5">Back</button>
+        </a>
+    </div>
+
+</body>
+</html>

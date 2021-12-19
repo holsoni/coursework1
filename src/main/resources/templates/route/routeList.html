@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Route List</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="content">
+        <table>
+            <thead>
+                <tr class="title">
+                    <th style="">Id</th>
+                    <th style="">Start Station</th>
+                    <th style="">End Station</th>
+                    <th style="">Time</th>
+                    <th style="" colspan="2">OPTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr th:each="route: ${routeList}">
+                <td th:text="${route.id}"></td>
+                <td th:text="${route.startStation}"></td>
+                <td th:text="${route.endStation}"></td>
+                <td th:text="${route.time}"></td>
+                <td>
+                    <a th:href="@{/ui/route/delete/{id}(id=${route.id})}">
+                        <button class="buttonDelete">Delete</button>
+                    </a>
+                   <!-- <a th:href="@{/ui/route/showUpdateForm/{id}(id=${route.id})}">
+                        <button class="buttonEdit">Edit</button>
+                    </a>-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <br>
+
+        <a th:href = "@{/ui/route/showNewForm}">
+            <button class="btn btn-5">Add</button>
+        </a>
+
+    </div>
+</body>
+</html>
