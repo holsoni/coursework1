@@ -21,14 +21,14 @@
                 </tr>
             </thead>
             <tbody>
-            <tr th:each="train: ${trainList}">
+            <tr th:each="train: ${trainList}" class="script">
                 <td th:text="${train.code}"></td>
                 <td th:text="${train.route.name}"></td>
                 <td th:text="${train.platform.number}"></td>
                 <td th:text="${train.timeOfArrival}"></td>
                 <td th:text="${train.timeOfDeparture}"></td>
                 <td th:text="${train.timeOfStop}"></td>
-                <td th:text="${train.onStation}"></td>
+                <td th:text="${train.onStation}" class="onStation"></td>
 
                 <td>
                     <a th:href="@{/ui/train/delete/{id}(id=${train.id})}">
@@ -50,4 +50,13 @@
 
     </div>
 </body>
+<script>
+    let elements = document.querySelectorAll(".script");
+    elements.forEach(element => {
+        if(element.querySelector(".onStation").innerHTML==="true")
+            {
+                element.style.background="#5fbb88";
+            }
+    })
+</script>
 </html>
