@@ -44,7 +44,10 @@ public class TrainUiController {
             }
             if(train.getTimeOfDeparture().isBefore(LocalTime.now())){
                 trainService.delete(train.getId());
-                platformService.getById(train.getPlatform().getId()).setFree(false);
+
+                Platform platform = platformService.getById(train.getPlatform().getId());
+                platform.setFree(false);
+                platformService.update(platform);
             }
 
         };
