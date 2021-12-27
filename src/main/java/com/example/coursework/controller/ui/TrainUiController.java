@@ -1,8 +1,8 @@
 package com.example.coursework.controller.ui;
 
-import com.example.coursework.model.Platform;
-import com.example.coursework.model.Route;
-import com.example.coursework.model.Train;
+import com.example.coursework.model.*;
+import com.example.coursework.service.cancelledTrain.CancelledTrainServiceImpl;
+import com.example.coursework.service.departuredTrain.DeparturedTrainServiceImpl;
 import com.example.coursework.service.platform.PlatformServiceImpl;
 import com.example.coursework.service.route.TrainServiceImpl;
 import com.example.coursework.service.train.RootServiceImpl;
@@ -18,8 +18,15 @@ import java.util.*;
 @RequestMapping("/ui/train")
 @Controller
 public class TrainUiController {
+    List<Train> deletedTrains = new ArrayList<>();
+    List<Train> departuredTrains = new ArrayList<>();
     @Autowired
     TrainServiceImpl trainService;
+    @Autowired
+    CancelledTrainServiceImpl cancelledTrainService;
+    @Autowired
+    DeparturedTrainServiceImpl departuredTrainService;
+
 
     @Autowired
     RootServiceImpl rootService;
@@ -44,11 +51,17 @@ public class TrainUiController {
             }
             if(train.getTimeOfDeparture().isBefore(LocalTime.now())){
                 trainService.delete(train.getId());
-
+                departuredTrains.add(train);
                 Platform platform = platformService.getById(train.getPlatform().getId());
-                platform.setFree(false);
+                platform.setFree(true);
                 platformService.update(platform);
             }
+            if(train.getTimeOfDeparture().isAfter(LocalTime.now())){
+                train.setOnStation(false);
+                Platform platform = platformService.getById(train.getPlatform().getId());
+
+            }
+
 
         };
 
@@ -95,15 +108,26 @@ public class TrainUiController {
         Duration timeOfStop = Duration.between(train.getTimeOfDeparture(),train.getTimeOfArrival());
         train.setTimeOfStop(timeOfStop);
         train.setPlatform(getPlatform());
-        model.addAttribute("train", trainService.create(train));
-
+        DeparturedTrain dTrain = new DeparturedTrain(train);
+        if(train.getTimeOfDeparture().isBefore(LocalTime.now())){
+            departuredTrainService.create(dTrain);
+            Platform platform = platformService.getById(train.getPlatform().getId());
+            platform.setFree(true);
+            platformService.update(platform);
+        }
+        else {
+            model.addAttribute("train", trainService.create(train));
+        }
 
         return "redirect:/ui/train/get/all";
     }
 
     @RequestMapping("/delete/{id}")
     public String delete(Model model, @PathVariable String id){
+        Train deletedTrain = trainService.getById(id);
+        CancelledTrain cTrain = new CancelledTrain(deletedTrain);
         trainService.delete(id);
+        cancelledTrainService.create(cTrain);
         return "redirect:/ui/train/get/all";
     }
 

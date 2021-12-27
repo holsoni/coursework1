@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cancelled Trains</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+<div class="content">
+    <table>
+        <thead>
+        <tr class="title">
+            <th style="">Code</th>
+            <th style="">Route</th>
+            <th style="">Platform</th>
+            <th style="">TimeOfArrival</th>
+            <th style="">TimeOfDeparture</th>
+            <th style="">TimeOfStop</th>
+            <th style="">OnStation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="train: ${trainList}" class="script">
+            <td th:text="${train.code}"></td>
+            <td th:text="${train.route.name}"></td>
+            <td th:text="${train.platform.number}"></td>
+            <td th:text="${train.timeOfArrival}"></td>
+            <td th:text="${train.timeOfDeparture}"></td>
+            <td th:text="${train.timeOfStop}"></td>
+            <td th:text="${train.onStation}" class="onStation"></td>
+
+
+        </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <a th:href = "@{/ui/cancelledTrains/deleteAll}">
+        <button class="btn btn-5">Delete All</button>
+    </a>
+</div>
+</body>
+<script>
+    let elements = document.querySelectorAll(".script");
+    elements.forEach(element => {
+        element.style.background="red";
+    })
+</script>
+</html>

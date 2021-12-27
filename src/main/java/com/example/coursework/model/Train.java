@@ -14,7 +14,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "trains")
-public class Train {
+public class Train implements Cloneable{
     @Id
     private String id;
     private String code;
@@ -24,4 +24,8 @@ public class Train {
     private LocalTime timeOfArrival;
     private Duration timeOfStop;
     private boolean onStation;
+
+    public Train clone(){
+        return this.clone();
+    }
 }
